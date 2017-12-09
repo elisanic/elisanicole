@@ -1,0 +1,38 @@
+.footer {
+  padding: 30px;
+  color: $white;
+  background-color: $black;
+  font-size: 10px;
+  transition: color 1s ease-in-out;
+
+  > a {
+    font-weight: 600;
+    position: relative;
+
+    @include mq(980px) {
+      &:hover {
+        color: lighten($blue,25%);
+      }
+
+      &:hover:after {
+        background-color: lighten($blue,25%);
+      }
+    }
+  }
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-link {
+  font-size: 32px;
+  padding: 5px 5px 10px;
+  display: block;
+}
+
+.copy {
+  padding: 15px 0 0;
+}

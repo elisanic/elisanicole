@@ -1,0 +1,117 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: height 2s;
+  height: 60px;
+  background-color: $white;
+  box-shadow: 2px 2px 16px $grey;
+
+  @include mq(700px) {
+    background-color: $black;
+    height: 110px;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+
+  @include mq(700px) {
+    max-width: 830px;
+    margin: 0 auto;
+    color: $white;
+  }
+}
+
+.nav-list {
+  position: absolute;
+  display: flex;
+  flex-wrap: nowrap;
+  top: 100%;
+  right: -100%;
+  width: 100%;
+  background-color: $black;
+  transition: 0.3s ease-in-out;
+
+  @include mq(700px) {
+    position: static;
+    right: 0;
+    background-color: transparent;
+    width: auto;
+  }
+
+  .is-active & {
+    right: 0;
+  }
+}
+
+.nav-item {
+  width: 25%;
+
+  @include mq(700px) {
+    width: auto;
+  }
+}
+
+.nav-link {
+  display: block;
+  padding: 0 15px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  text-transform: uppercase;
+  border-right: 0.5px solid $grey;
+
+  .nav-item:last-child & {
+    border-right: 0;
+  }
+
+  @include mq(700px) {
+    border: 0;
+    padding: 0 30px;
+  }
+
+  @include mq(980px) {
+    &:hover {
+      color: lighten($blue,25%);
+    }
+
+    &:before {
+      height:3px;
+      background-color: lighten($blue, 25%);
+    }
+
+    &:hover:before {
+      width: calc(100% - 60px);
+    }
+  }
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  padding: 15px;
+  color: $blue;
+
+  span:first-child {
+    color:$pink;
+  }
+
+  @include mq(700px) {
+    font-size: 32px;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  @include mq(980px) {
+    &:hover {
+      color: $blue;
+    }
+  }
+}

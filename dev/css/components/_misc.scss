@@ -1,0 +1,128 @@
+/*
+ *
+ * List
+ *
+ */
+
+.list li {
+  padding-bottom: 10px;
+  position: relative;
+  padding-left: 15px;
+
+  &:before {
+    content:'';
+    width:5px;
+    height:5px;
+    display:block;
+    position: absolute;
+    left:0;
+    top: 8px;
+    background-color: $purple;
+    transform: rotate(45deg);
+  }
+}
+
+.list-spaced li {
+  margin-bottom: 20px;
+}
+
+
+/*
+ *
+ * Brags
+ *
+ */
+
+.brag-wrap {
+  position: relative;
+  margin-top: 30px;
+  padding-top:  30px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:after {
+    content: '+40%';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    color: $purple;
+    font-weight: 900;
+    font-size: 90px;
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0.1;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+
+  &:last-child:after {
+    content: '25/mo';
+    font-size: 75px;
+  }
+
+  @include mq(700px) {
+    padding-left: 30%;
+
+    &:after {
+      left: 0;
+      width: 25%;
+      font-size: 110px;
+    }
+
+    &:last-child {
+      padding-left: 0;
+      padding-right: 43%;
+      text-align: right;
+
+      &:after {
+        left:60%;
+      }
+    }
+  }
+
+  @include mq(980px) {
+    padding-left: 60%;
+
+    &:after {
+      font-size: 200px;
+    }
+
+  }
+}
+
+/*
+ *
+ * FAQ
+ *
+ */
+
+.faq {
+  padding-bottom: 30px;
+
+  li {
+    padding-bottom: 30px;
+  }
+}
+
+.answer,
+.question {
+  display: block;
+
+  &:before {
+    font-weight: 600;
+    color: $blue;
+    content: "A: ";
+  }
+}
+
+.question {
+  font-weight: 600;
+  padding-bottom: 10px;
+
+  &:before {
+    content: "Q: ";
+  }
+}
