@@ -1,29 +1,29 @@
 (function(ElisaNic, $) {
-  'use strict';
+  const $window = $(window);
+  const $html = $('html,body');
+  const $toTop = $('.js-top');
+  const $nav = $('.js-nav');
+  const $menu = $('.js-menu');
+  const $footer = $('.js-footer');
 
-  var $window = $(window),
-      $html = $('html,body'),
-      $toTop = $('.js-top'),
-      $nav = $('.js-nav'),
-      $menu = $('.js-menu'),
-      $footer = $('.js-footer'),
+  let toTop = 0;
+  let currScroll = 0;
+  let prevScroll = 0;
 
-      toTop = 0, currScroll = 0, prevScroll = 0;
-
-  var animateScroll = function (hash) {
-    var scrollTo = $(hash).length ? $(hash).offset().top - 140 : 0;
+  const animateScroll = (hash) => {
+    let scrollTo = $(hash).length ? $(hash).offset().top - 140 : 0;
     $html.animate({ scrollTop: scrollTo }, 300);
   };
 
-  var bindUIActions = function() {
+  const bindUIActions = () => {
     $html.removeClass('is-hidden');
 
-    $menu.on('click', function () {
+    $menu.on('click', () => {
       $menu.parent().toggleClass('is-active');
       return false;
     });
 
-    $window.on('scroll', function () {
+    $window.on('scroll', () => {
         toTop = $toTop.offset().top;
         currScroll = $window.scrollTop();
 
@@ -40,18 +40,18 @@
         prevScroll = currScroll;
     });
 
-    $toTop.on('click', function () {
+    $toTop.on('click', () => {
       animateScroll($(this).attr('href'));
       return false;
     });
 
-    $nav.find('a').on('click', function () {
+    $nav.find('a').on('click', () => {
       animateScroll($(this).attr('href'));
       return false;
     });
   };
 
-  ElisaNic.init = function() {
+  ElisaNic.init = () => {
     bindUIActions();
   };
 
