@@ -40,13 +40,13 @@
         prevScroll = currScroll;
     });
 
-    $toTop.on('click', () => {
-      animateScroll($(this).attr('href'));
+    $toTop.on('click', (e) => {
+      animateScroll($(e.target).attr('href'));
       return false;
     });
 
-    $nav.find('a').on('click', () => {
-      animateScroll($(this).attr('href'));
+    $nav.find('a').on('click', (e) => {
+      animateScroll($(e.target).attr('href'));
       return false;
     });
   };
