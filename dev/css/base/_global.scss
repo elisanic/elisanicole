@@ -10,12 +10,12 @@ body {
   font-family: $sans;
   font-size: 16px;
   line-height: 1.3em;
-  font-weight: 300;
+  font-weight: $normal;
   text-rendering: optimizeLegibility;
 }
 
 strong {
-  font-weight: 900;
+  font-weight: $bold;
   color: $pink;
 }
 
@@ -25,7 +25,7 @@ li {
 
 a {
   text-decoration: none;
-  font-weight: 600;
+  font-weight: $semi;
   color: $blue;
 
   @include mq(980px) {
@@ -50,23 +50,20 @@ a {
 }
 
 .main {
-  margin-top: 110px;
-  padding: 30px;
+  padding: 132px 30px 0;
   position: relative;
   max-width: 100%;
-  opacity: 1;
-  visibility: visible;
-  transition: 0.3s ease-in-out all;
 
-  .is-hidden & {
-    opacity: 0;
-    visibility: hidden;
+  @include mq(700px) {
+    margin-left: 30%;
+    padding-top: 0;
+    // background-color: #231f20;
+    // color: #FFF;
   }
 }
 
 .h1 {
-  font-family: $cursive;
-  font-weight: 400;
+  font-weight: $bold;
   font-size: 28px;
   text-align: center;
   line-height: 1.2;
@@ -106,11 +103,13 @@ a {
 }
 
 .h2 {
-  font-family: $cursive;
-  font-weight: 300;
+  font-weight: $normal;
   font-size: 28px;
   line-height: 1.2;
-  text-align: center;
+
+  .dark & {
+    color: $white;
+  }
 
   @include mq(700px) {
     font-size: 36px;
@@ -119,7 +118,7 @@ a {
 }
 
 .h3 {
-  font-weight: 900;
+  font-weight: $normal;
   font-size: 20px;
   line-height: 1.4;
 
@@ -150,7 +149,7 @@ a {
   }
 
   span span {
-    font-weight: 600;
+    font-weight: $semi;
     font-size:12px;
     display: block;
   }
@@ -170,5 +169,31 @@ a {
   &:first-of-type:after,
   &:last-of-type:after {
     transform: rotate(1deg);
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.ul {
+  margin-left: 30px;
+  margin-bottom: 30px;
+
+  li {
+    position: relative;
+    margin: 10px 0;
+  }
+
+  li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -15px;
+    top: 6px;
+    width: 5px;
+    height: 5px;
+    background-color: $purple;
+    border-radius: 50%;
   }
 }

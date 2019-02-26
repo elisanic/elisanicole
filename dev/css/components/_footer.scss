@@ -6,7 +6,7 @@
   transition: color 1s ease-in-out;
 
   > a {
-    font-weight: 600;
+    font-weight: $semi;
     position: relative;
 
     @include mq(980px) {
@@ -25,6 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .social-link {

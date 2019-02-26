@@ -1,51 +1,52 @@
 (function(ElisaNic, $) {
   const $window = $(window);
-  const $html = $('html,body');
   const $toTop = $('.js-top');
-  const $nav = $('.js-nav');
   const $menu = $('.js-menu');
-  const $footer = $('.js-footer');
 
-  let toTop = 0;
-  let currScroll = 0;
-  let prevScroll = 0;
-
-  const animateScroll = (hash) => {
-    let scrollTo = $(hash).length ? $(hash).offset().top - 140 : 0;
-    $html.animate({ scrollTop: scrollTo }, 300);
+  const isMobile = () => {
+    return window.innerWidth < 700;
   };
 
-  const bindUIActions = () => {
-    $html.removeClass('is-hidden');
+  const animateScroll = (hash) => {
+    let scrollTo = $(hash).length ? $(hash).offset().top: 0;
 
+    if(isMobile()) {
+      scrollTo = scrollTo - 132;
+    }
+
+    $('html,body').animate({
+      scrollTop: scrollTo
+    }, 300);
+  };
+
+  const menuToggle = () => {
+    $menu.parent().toggleClass('is-active');
+  }
+
+  const bindUIActions = () => {
     $menu.on('click', () => {
-      $menu.parent().toggleClass('is-active');
+      menuToggle();
       return false;
     });
 
     $window.on('scroll', () => {
-        toTop = $toTop.offset().top;
-        currScroll = $window.scrollTop();
+      let currScroll = $window.scrollTop();
+      let minToShow = window.innerHeight / 2;
 
-        if (toTop >= $footer.offset().top - 55) {
-            if (prevScroll < currScroll) {
-                $toTop.css('position', 'absolute');
-            } else if ($window.scrollTop() + $window.height() <= $footer.offset().top) {
-                $toTop.css('position', 'fixed');
-            }
-        } else if (toTop > $('.h1').offset().top) {
-            $toTop.fadeIn().css('position', 'fixed');
-        }
-
-        prevScroll = currScroll;
+      if (currScroll > minToShow) {
+        $toTop.fadeIn().css('position', 'fixed');
+      } else {
+        $toTop.fadeOut();
+      }
     });
 
-    $toTop.on('click', () => {
+    $toTop.on('click', function() {
       animateScroll($(this).attr('href'));
       return false;
     });
 
-    $nav.find('a').on('click', () => {
+    $('.js-nav a').on('click', function() {
+      menuToggle();
       animateScroll($(this).attr('href'));
       return false;
     });
