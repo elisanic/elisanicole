@@ -67,7 +67,7 @@ a {
   font-size: 28px;
   text-align: center;
   line-height: 1.2;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   opacity: 1;
   visibility: visible;
   transition: 0.3s ease-in-out all;
@@ -79,24 +79,36 @@ a {
   }
 
   @include mq(700px) {
-    font-size: 60px;
+    font-size: 45px;
     margin: 60px 0;
+
+    br {
+      display: none;
+    }
   }
 
   span {
     display: block;
     white-space: nowrap;
 
+    &:after {
+      content: ' - ';
+      display: block;
+      color: $blue;
+      margin: 5px auto;
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+
     @include mq(600px) {
       display: inline;
       white-space: normal;
 
       &:after {
-        content: ' - ';
-      }
-
-      &:last-child:after {
-        display: none;
+        display: inline;
+        margin: 0;
       }
     }
   }
