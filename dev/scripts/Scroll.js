@@ -3,7 +3,7 @@
   Scroll.animate = (hash) => {
     let scrollTo = $(hash).length ? $(hash).offset().top: 0;
 
-    if(IsMobile.check()) {
+    if(ene.IsMobile.check()) {
       scrollTo = scrollTo - 132;
     }
 
