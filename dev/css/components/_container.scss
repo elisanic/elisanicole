@@ -28,9 +28,66 @@ section section {
   text-align: center;
 }
 
-.flex-col {
-  @include mq(700px) {
-    display: flex;
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 -10px;
+}
+
+.modal-tile {
+  width: 120px;
+  margin: 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 10px;
+  transition: 0.3s ease-in-out border-color;
+
+  &:hover {
+    border-color: #5052b5;
+  }
+}
+
+img[data-src] {
+  opacity: 0;
+  transition: 0.3s ease-in-out opacity;
+
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: rgba(255,255,255,0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease-in-out all;
+
+  .modal-active > & {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%,-50%);
+
+  img {
+    max-height: 90vh;
+    max-width: 90vw;
   }
 }
 
